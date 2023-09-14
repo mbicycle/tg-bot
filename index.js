@@ -3,7 +3,12 @@ const { Telegraf } = require('telegraf');
 const { OpenAI } = require('openai');
 
 const dotenv = require('dotenv');
-dotenv.config();
+dotenv.config(); // Configure envirement variables.
+// createa .env file, example:
+/*
+TGBOT_TOKEN='123123'
+OPENAI_KEY='123124124'
+*/
 
 const app = express();
 
@@ -31,6 +36,7 @@ bot.on('message', async (ctx) => {
     
     const completion = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
+        // temperature: 2,
         messages: [
             { role: 'user', content: ctx.message.text }
         ]
