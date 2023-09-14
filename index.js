@@ -3,12 +3,7 @@ const { Telegraf } = require('telegraf');
 const { OpenAI } = require('openai');
 
 const dotenv = require('dotenv');
-dotenv.config(); // Configure envirement variables.
-// createa .env file, example:
-/*
-TGBOT_TOKEN='123123'
-OPENAI_KEY='123124124'
-*/
+dotenv.config();
 
 const app = express();
 
