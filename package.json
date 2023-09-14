@@ -1,0 +1,23 @@
+{
+  "name": "tg-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"OK\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbicycle/tg-bot.git"
+  },
+  "author": "Andrey Titok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbicycle/tg-bot/issues"
+  },
+  "homepage": "https://github.com/mbicycle/tg-bot#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
