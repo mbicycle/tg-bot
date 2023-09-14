@@ -1,5 +1,6 @@
 const express = require('express');
 const { Telegraf } = require('telegraf');
+const { OpenAI } = require('openai');
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -18,11 +19,26 @@ app.get('/status', (req, res) => {
 
 
 const TGBOT_TOKEN = process.env.TGBOT_TOKEN;
+const OPENAI_KEY = process.env.OPENAI_KEY;
 
 const bot = new Telegraf(TGBOT_TOKEN);
+const openai = new OpenAI({
+    apiKey: OPENAI_KEY
+});
 
-bot.on('message', (ctx) => {
-    ctx.reply('HELLO');
+bot.on('message', async (ctx) => {
+    console.log(`Message = [${ctx.message.text}]`);
+    
+    const completion = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+            { role: 'user', content: ctx.message.text }
+        ]
+    });
+
+    const replyMessage = completion.choices[0].message.content;
+
+    ctx.reply(replyMessage);
 });
 
 bot.launch();
